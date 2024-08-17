@@ -3,16 +3,17 @@
 
 <%
     String contextPath = request.getContextPath();  //~
+    String fromServlet = (String) request.getAttribute("fromServlet");
 %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<!-- comment -->
+
+
 <h1>JSP</h1>
 <p>Java server pages - технологія створення вебзастосунків на Java</p>
-<a href="<%= contextPath %>/hello.jsp">Hello world</a>
+<a href="<%= contextPath %>/WEB-INF/views/hello.jsp">Hello world</a>
+<p>
+    fromServlet = <%=fromServlet%>
+</p>
+
 <%
     // блок коду за синтаксісом Java
     int x = 10;
@@ -26,6 +27,3 @@
 <% for (int a : arr) { %>
 <span> element = <%= a %> </span> &emsp;
 <%} %>
-}
-</body>
-</html>
