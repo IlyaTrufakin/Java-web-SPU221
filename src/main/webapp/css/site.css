@@ -1,0 +1,20 @@
+body {
+    background-color: papayawhip;
+display: flex;
+    flex-direction: column;
+
+}
+
+.spacer {
+    flex: 1;
+}
+
+.navbar-brand img {
+    max-height: 50px;
+    max-width: 50px;
+}
+
+footer {
+    background-color: cornflowerblue;
+padding: 10px;
+}
