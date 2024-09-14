@@ -22,6 +22,6 @@ document.addEventListener('submit',
                     email,
                     password
                 })
-            }).then(r => r.text()).then(console.log);
+            }).then(r => r.json()).then(console.log);
         }
     })
