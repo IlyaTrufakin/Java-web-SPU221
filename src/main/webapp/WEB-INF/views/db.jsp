@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%
-    String error = (String) request.getAttribute("error");
+    String error = (String) request.getAttribute("dbError");
     List<?> databases = (List<?>) request.getAttribute("dataBases");
 %>
 

@@ -18,24 +18,37 @@ public class HomeServlet extends HttpServlet {
 
     private final HashService digestHashService; // MD5
     private final HashService signatureHashService; // SHA
+    private final String viewsFolder;
+    private final String resourceFolder;
+
     @Inject
     public HomeServlet(
             @Named("digest") HashService digestHashService,
-            @Named("signature") HashService signatureHashService.
-
+            @Named("signature") HashService signatureHashService,
+            @Named("viewsFolder") String viewsFolder,
+            @Named("resourceFolder") String resourceFolder
     ) {
         this.digestHashService = digestHashService;
         this.signatureHashService = signatureHashService;
+        this.viewsFolder = viewsFolder;
+        this.resourceFolder = resourceFolder;
     }
-
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-   //viewData["fromServlet"] = "HomeServlet"
-        req.setAttribute("fromServlet", digestHashService.digest("123") +
+        //viewData["fromServlet"] = "HomeServlet"
+        req.setAttribute("fromServlet",
+                digestHashService.digest("123") +
                 " " +
-                        digestHashService.digest("123"));  // ViewData["fromServlet"] = "HomeServlet"
+                signatureHashService.digest("123") +
+        " " +
+                viewsFolder +
+                " " +
+                resourceFolder + " " + new String(Character.toChars(122))
+        );
+
+        // ViewData["fromServlet"] = "HomeServlet"
         req.setAttribute("pageBody", "index.jsp");
         // return View()
         req.getRequestDispatcher("WEB-INF/views/_layout.jsp").forward(req, resp);

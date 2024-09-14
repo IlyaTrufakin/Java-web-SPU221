@@ -8,11 +8,12 @@ public class WebModule extends ServletModule {
     @Override
     //регистрируем фильтры
     protected void configureServlets() {
-        filter("/*").through(CharsetFilter.class);
-
+        //     filter("/*").through(CharsetFilter.class); фильтр срабатывает на все, в том числе ресурсные служебные запросы
+        filterRegex("^/(?!css/.*|js/.*|img/.*).*$").through(CharsetFilter.class);
         // и сервлеты
         serve("/").with(HomeServlet.class);
         serve("/db").with(DbServlet.class);
+        serve("/user").with(UserServlet.class);
     }
 }
 

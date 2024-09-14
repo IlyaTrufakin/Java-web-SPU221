@@ -16,14 +16,25 @@
 
 <%
     // блок коду за синтаксісом Java
-    int x = 10;
-    double y = 56.6;
-    int[] arr = {1, 2, 3, 4};
+
 %>
-<p>x = <%= x %>
-</p>
-<p>y = <%= y %>
-</p>
-<% for (int a : arr) { %>
-<span> element = <%= a %> </span> &emsp;
-<%} %>
+
+<form id="signup-form" action="<%=contextPath%>/user">
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Name</span>
+    <input name="userName"  type="text" class="form-control" placeholder="Name">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon2">Email</span>
+    <input name="userEmail"  type="text" class="form-control" placeholder="Email">
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon3">Password</span>
+    <input name="userPassword" type="text" class="form-control" placeholder="Password">
+</div>
+<button class="btn btn-primary">Sign-up</button>
+
+</form>
